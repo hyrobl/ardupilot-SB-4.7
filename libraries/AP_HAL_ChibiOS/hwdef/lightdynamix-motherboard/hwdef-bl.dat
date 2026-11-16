@@ -1,0 +1,7 @@
+# The Pixel has a MatekH743 with bidirectional DShot
+
+include ../lightdynamix-pixel/hwdef-bl.dat
+
+APJ_BOARD_ID AP_HW_Dynamix_PYRO
+
+define CHIBIOS_SHORT_BOARD_NAME "Pyro"

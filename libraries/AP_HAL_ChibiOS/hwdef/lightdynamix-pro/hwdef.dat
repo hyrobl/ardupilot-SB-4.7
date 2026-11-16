@@ -1,0 +1,283 @@
+# hw definition file for processing by chibios_hwdef.py
+# LightDynamix Pro Bringup Step
+MCU STM32H7xx STM32H743xx
+
+APJ_BOARD_ID AP_HW_Dynamix_PRO
+
+OSCILLATOR_HZ 16000000
+
+FLASH_SIZE_KB 2048
+
+FLASH_RESERVE_START_KB 128
+
+STM32_ST_USE_TIMER 12
+define CH_CFG_ST_RESOLUTION 16
+
+define HAL_STORAGE_SIZE 32768
+STORAGE_FLASH_PAGE 14
+
+
+########################################
+# USB
+########################################
+
+PA11 OTG_FS_DM OTG1
+PA12 OTG_FS_DP OTG1
+
+PA13 JTMS-SWDIO SWD
+PA14 JTCK-SWCLK SWD
+
+
+########################################
+# SPI1 - IMU1
+########################################
+
+PA5 SPI1_SCK SPI1
+PA6 SPI1_MISO SPI1
+PA7 SPI1_MOSI SPI1
+
+PA4 IMU1_CS CS
+
+
+########################################
+# SPI4 - IMU2
+########################################
+
+PE2 SPI4_SCK SPI4
+PE5 SPI4_MISO SPI4
+PE6 SPI4_MOSI SPI4
+
+PE4 IMU2_CS CS
+
+
+########################################
+# I2C
+########################################
+
+I2C_ORDER I2C1 I2C2 I2C4
+
+PB6 I2C1_SCL I2C1
+PB7 I2C1_SDA I2C1
+
+PB10 I2C2_SCL I2C2
+PB11 I2C2_SDA I2C2
+
+PB8 I2C4_SCL I2C4
+PB9 I2C4_SDA I2C4
+
+
+########################################
+# ADC
+########################################
+
+PC0 BATT_VOLTAGE_SENS ADC1 SCALE(1)
+PC1 BATT_CURRENT_SENS ADC2 SCALE(1)
+
+define HAL_BATT_VOLT_PIN 10
+define HAL_BATT_CURR_PIN 11
+
+define HAL_BATT_VOLT_SCALE 10.2
+define HAL_BATT_CURR_SCALE 20.4
+
+
+########################################
+# LEDs
+########################################
+
+PD13 LED_BLUE OUTPUT HIGH GPIO(90)
+PD14 LED_GREEN OUTPUT HIGH GPIO(91)
+PD15 LED_RED OUTPUT HIGH GPIO(92)
+
+define AP_NOTIFY_GPIO_LED_RGB_RED_PIN 92
+define AP_NOTIFY_GPIO_LED_RGB_GREEN_PIN 91
+define AP_NOTIFY_GPIO_LED_RGB_BLUE_PIN 90
+
+define HAL_GPIO_LED_ON 1
+define AP_NOTIFY_GPIO_LED_RGB_ENABLED 1
+
+
+########################################
+# UARTS
+########################################
+
+SERIAL_ORDER OTG1 USART1 USART2 USART3 UART4 USART6 UART7 UART8
+
+# USART1
+PA9 USART1_TX USART1
+PA10 USART1_RX USART1
+
+# USART2
+PD6 USART2_RX USART2
+PD5 USART2_TX USART2
+
+# USART3
+PD8 USART3_TX USART3
+PD9 USART3_RX USART3
+
+# UART4
+PD0 UART4_RX UART4
+PD1 UART4_TX UART4
+
+# USART5
+
+# USART6
+PC6 USART6_TX USART6
+PC7 USART6_RX USART6
+
+# UART7
+PE7 UART7_RX UART7
+PE8 UART7_TX UART7
+
+# UART8
+PE0 UART8_RX UART8
+PE1 UART8_TX UART8
+
+
+########################################
+# Motor / Speed Control Outputs
+########################################
+
+# SpeedCont_1
+PA0 TIM2_CH1 TIM2 PWM(1) GPIO(50)
+
+# SpeedCont_2
+PA2 TIM2_CH3 TIM2 PWM(2) GPIO(51)
+
+# SpeedCont_3
+PE13 TIM1_CH3 TIM1 PWM(3) GPIO(52)
+
+# SpeedCont_4
+PE14 TIM1_CH4 TIM1 PWM(4) GPIO(53)
+
+
+########################################
+# NeoPixel
+########################################
+
+# PB0/PB1 are TIM3 outputs on STM32H743.
+# The schematic labels them TIM1_CH1/CH2, but that is not
+# a valid independent TIM1 CH1/CH2 mapping for these pins.
+
+PB0 TIM3_CH3 TIM3 PWM(5) GPIO(54)
+PB1 TIM3_CH4 TIM3 PWM(6) GPIO(55)
+
+
+########################################
+# Limit Switch Inputs
+########################################
+
+PA3 LS_RD2 INPUT
+PB2 LS_RD1 INPUT
+PC2 LS_RD3 INPUT
+
+
+########################################
+# IMU Interrupts
+########################################
+
+PA1 IMU1_INT INPUT
+PE3 IMU2_INT INPUT
+
+
+########################################
+# Relays
+########################################
+
+define AP_RELAY_NUM_RELAYS 8
+
+PA8 GPIO_Relay_2 OUTPUT LOW GPIO(62)
+
+PD7 GPIO_Relay_3 OUTPUT LOW GPIO(63)
+PD10 GPIO_Relay_1 OUTPUT LOW GPIO(64)
+
+PC13 GPIO_Relay_4 OUTPUT LOW GPIO(65)
+PC4 GPIO_Relay_5 OUTPUT LOW GPIO(66)
+PC5 GPIO_Relay_6 OUTPUT LOW GPIO(67)
+
+PE12 GPIO_Relay_7 OUTPUT LOW GPIO(68)
+PE15 GPIO_Relay_8 OUTPUT LOW GPIO(69)
+
+
+########################################
+# SPI3
+########################################
+
+#PB3 SPI3_SCK SPI3
+#PB4 SPI3_MISO SPI3
+#PB5 SPI3_MOSI SPI3
+
+
+########################################
+# SPI2
+########################################
+
+#PB12 SPI2_NSS CS
+#PB13 SPI2_SCK SPI2
+#PB14 SPI2_MISO SPI2
+#PB15 SPI2_MOSI SPI2
+
+
+########################################
+# SDMMC
+########################################
+
+PC12 SDMMC1_CK SDMMC1
+PD2 SDMMC1_CMD SDMMC1
+
+PC8 SDMMC1_D0 SDMMC1
+PC9 SDMMC1_D1 SDMMC1
+PC10 SDMMC1_D2 SDMMC1
+PC11 SDMMC1_D3 SDMMC1
+
+
+########################################
+# DMA
+########################################
+
+DMA_PRIORITY TIM1* TIM2* TIM3* SPI1* SPI4*
+DMA_NOSHARE TIM1* TIM2* TIM3* SPI1* SPI4*
+
+
+########################################
+# SPI DEVICE
+########################################
+
+SPIDEV imu1 SPI4 DEVID1 IMU1_CS MODE3 2*MHZ 16*MHZ
+#SPIDEV imu2 SPI1 DEVID2 IMU2_CS MODE3 2*MHZ 16*MHZ
+
+
+########################################
+# IMU
+########################################
+
+IMU Invensensev3 SPI:imu1 ROTATION_PITCH_180
+#IMU Invensensev3 SPI:imu2 ROTATION_PITCH_180
+
+
+########################################
+# Filesystem
+########################################
+
+define FATFS_HAL_DEVICE SDCD1
+define HAL_OS_FATFS_IO 1
+
+
+########################################
+# BARO
+########################################
+
+BARO DPS310 I2C:0:0x76
+BARO SPL06 I2C:0:0x77
+
+
+########################################
+# Compass
+########################################
+
+define ALLOW_ARM_NO_COMPASS
+define AP_COMPASS_PROBING_ENABLED 1
+
+
+########################################
+
+env BUILD_ABIN True

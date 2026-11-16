@@ -1,0 +1,7 @@
+# The Pixel has a MatekH743 with bidirectional DShot
+
+include ../MatekH743-bdshot/hwdef.dat
+
+APJ_BOARD_ID AP_HW_Dynamix_PIXEL
+
+define AP_COPTER_ADVANCED_FAILSAFE_ENABLED 1
